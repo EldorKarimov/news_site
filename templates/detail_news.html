@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ new.title }} {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-3" style="text-align:left; margin-top:20px">
+            So'ngi yangiliklar <br>
+            {% for n_last in last_news %}
+            <span>Sana: {{n_last.created | time:'h:i'}} / {{ n_last.created | date:'d.m.Y'}}</span>
+                <p class="last_newsxxx"><a href="{% url 'detail_news' n_last.slug %}">{{ n_last.title }}</a></p>
+            <hr>
+            {% endfor %}
+
+        </div>
+        <div class="col-lg-6">
+            <h3>{{ news.title }}</h3>
+            <img style="width: 650px;" src="{{ news.image.url }}">
+            <p>{{ news.description }}</p>
+            <p>{{ news.created }}</p>
+            <p>Ko'rishlar soni: {{ news.views }}</p>
+        </div>
+        <div class="col-lg-3" style="text-align: left; margin-top:20px">
+            {{ news.category.name }} yangiliklari <br><br>
+
+            {% for cdn in category_detail_news %}
+
+                <span>{{ cdn.created | time:'h:i' }} / {{cdn.created | date:'d.m.Y'}}</span>
+                <div>
+                    <a href="{% url 'detail_news' cdn.slug %}">{{ cdn.title }}</a>
+                </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

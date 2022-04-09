@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <main>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              {% for new in news %}
+            <div class="card" style="width: 18rem;">
+              <img src="{{ new.image.url }}" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'detail_news' new.slug %}">{{ new.title }}</a></h5>
+                <p class="card-text">{{ new.created }}</p>
+<!--                <a href="#" class="btn btn-primary">Batafsil</a>-->
+              </div>
+            </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock %}

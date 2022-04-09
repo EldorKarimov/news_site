@@ -1,0 +1,17 @@
+.card-title a{
+    text-decoration: none;
+    color: black;
+}
+.card-title a:hover {
+    color: blue;
+    coursor: pointer;
+}
+
+.last_news a{
+    text-decoration: none;
+    color: blue;
+}
+.last_news a:hover {
+    color: red;
+    coursor: pointer;
+}
